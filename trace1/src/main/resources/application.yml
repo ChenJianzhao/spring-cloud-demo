@@ -1,0 +1,6 @@
+spring.sleuth:
+  baggage-keys:
+    - foo
+    - upper_case
+  propagation-keys:
+    - x-trace-id

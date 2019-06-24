@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.example</groupId>
+        <artifactId>starter-parent</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+
+    <artifactId>zipkin-server</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <name>zipkin-server</name>
+    <description>Demo project for Spring Boot</description>
+
+    <properties>
+        <zippin.version>2.12.9</zippin.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>io.zipkin.java</groupId>
+            <artifactId>zipkin-server</artifactId>
+            <version>${zippin.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.zipkin.java</groupId>
+            <artifactId>zipkin-autoconfigure-ui</artifactId>
+            <version>${zippin.version}</version>
+        </dependency>
+
+
+<!--        <dependency>-->
+<!--            <groupId>io.zipkin.brave</groupId>-->
+<!--            <artifactId>brave</artifactId>-->
+<!--&lt;!&ndash;            <version>5.6.3</version>&ndash;&gt;-->
+<!--        </dependency>-->
+
+    </dependencies>
+
+
+
+</project>
