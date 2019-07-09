@@ -55,8 +55,8 @@ public class Trace1Application {
 
 	@RequestMapping(value = "/trace-feign", method = RequestMethod.GET)
 	public String traceFeign() {
-		Span initialSpan = tracer.currentSpan();
 //		Span initialSpan = this.tracer.nextSpan().name("span").start();
+		Span initialSpan = tracer.currentSpan();
 		ExtraFieldPropagation.set(initialSpan.context(), "foo", "bar");
 		ExtraFieldPropagation.set(initialSpan.context(), "UPPER_CASE", "someValue");
 		ExtraFieldPropagation.set(initialSpan.context(), "x-trace-id",
@@ -67,21 +67,4 @@ public class Trace1Application {
 
 		return trace2Client.trace2();
 	}
-
-//	@Bean
-//	public RequestInterceptor requestInterceptor() {
-//		return new TenantRequestInterceptor();
-//	}
-//
-//	@Slf4j
-//	static class TenantRequestInterceptor implements RequestInterceptor {
-//
-//		@Override
-//		public void apply(RequestTemplate template) {
-//			Map<String, Collection<String>> headers = template.headers();
-//			headers.forEach((header, values) -> {
-//				log.info("request haader {} -> [{}]", header, values.toString());
-//			});
-//		}
-//	}
 }
