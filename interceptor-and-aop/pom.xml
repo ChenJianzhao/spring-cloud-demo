@@ -8,7 +8,7 @@
         <version>0.0.1-SNAPSHOT</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <artifactId>interceprot-and-aop</artifactId>
+    <artifactId>interceptor-and-aop</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>interceptor-and-aop</name>
     <description>Demo project for Spring Boot</description>

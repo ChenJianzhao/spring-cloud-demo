@@ -8,34 +8,34 @@ import org.springframework.aop.Pointcut;
 import org.springframework.aop.support.DefaultPointcutAdvisor;
 import org.springframework.aop.support.annotation.AnnotationMatchingPointcut;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import javax.annotation.PostConstruct;
-import java.lang.annotation.Annotation;
 
 @Slf4j
 @Component
 public class CustomAdvisor extends DefaultPointcutAdvisor {
 
-//	private LogAdvice logAdvice;
-
-	CustomAdvisor(LogAdvice advice) {
-		super(advice);
+	CustomAdvisor() {
+		setAdvice(createAdvice());
+		setPointcut(createPointCut());
 	}
 
-	@PostConstruct
-	public void postConstruct() {
-//		this.setAdvice(this.logAdvice);
-		this.setPointcut(new ControllerAnnotationPointCut(RestController.class, RequestMapping.class));
+	private Pointcut createPointCut() {
+		return new AnnotationMatchingPointcut(RestController.class, GetMapping.class, true);
 	}
 
+	private Advice createAdvice() {
+		return new LogAdvice();
+	}
 
-	class ControllerAnnotationPointCut extends AnnotationMatchingPointcut {
+	public class LogAdvice implements MethodInterceptor {
 
-		ControllerAnnotationPointCut(Class<? extends Annotation> classAnnotationType,
-									 Class<? extends Annotation> methodAnnotationType) {
-			super(classAnnotationType, methodAnnotationType);
+		@Override
+		public Object invoke(MethodInvocation invocation) throws Throwable {
+			log.info("Advisor: log before method invoke");
+			Object retVal = invocation.proceed();
+			log.info("Advisor: log after method invoke");
+			return retVal;
 		}
 	}
 }
