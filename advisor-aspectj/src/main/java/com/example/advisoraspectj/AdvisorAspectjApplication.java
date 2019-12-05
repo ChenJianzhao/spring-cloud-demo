@@ -8,6 +8,9 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * 编程方式、注解方式实现 AOP
+ */
 @SpringBootApplication
 @RestController
 @EnableDiscoveryClient
